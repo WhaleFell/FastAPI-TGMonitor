@@ -1,0 +1,10 @@
+# TGBot DockerFile
+FROM python:3.8.5-alpine
+
+COPY ./requirements-TGBot.txt /requirements.txt
+
+RUN apk add git && pip install --no-cache-dir --upgrade -r /requirements.txt
+
+WORKDIR /wkdir
+
+CMD ["python3", "main.py"]
