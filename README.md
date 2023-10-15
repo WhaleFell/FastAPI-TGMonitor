@@ -30,3 +30,18 @@ if __name__ == "__main__":
 ## Production Deploy
 
 FastAPI Docker
+
+### Build Docker image
+
+```shell
+docker build -f FastAPIDockerfile -t tgfastapi .
+
+docker run -d --name=TGMonitorFastAPI \
+-v /wfwork/FastAPI-TGMonitor/:/app/ \
+-e PORT=80 \
+-e APP_MODULE=app.main:app \
+-p 9800:80 \
+tgfastapi
+
+
+```

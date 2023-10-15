@@ -64,20 +64,17 @@ async def startup_event():
 logger.info("The FastAPI Start Success!")
 
 
-# if __name__ == "__main__":
-#     uvicorn.run(app, host="127.0.0.1", port=8000)
-
-
-from asyncio import (
-    ProactorEventLoop,
-    set_event_loop,
-    get_event_loop,
-)
-from uvicorn import Config, Server
-
 if __name__ == "__main__":
-    set_event_loop(ProactorEventLoop())
-    server = Server(
-        config=Config(app=app, host="127.0.0.1", port=8000, workers=16)
-    )
-    get_event_loop().run_until_complete(server.serve())
+    if sys.platform == "win32":
+        from asyncio import (
+            ProactorEventLoop,
+            set_event_loop,
+            get_event_loop,
+        )
+        from uvicorn import Config, Server
+
+        set_event_loop(ProactorEventLoop())
+        server = Server(
+            config=Config(app=app, host="127.0.0.1", port=8000, workers=16)
+        )
+        get_event_loop().run_until_complete(server.serve())
