@@ -38,10 +38,15 @@ docker build -f FastAPIDockerfile -t tgfastapi .
 
 docker run -d --name=TGMonitorFastAPI \
 -v /wfwork/FastAPI-TGMonitor/:/app/ \
--e PORT=80 \
--e APP_MODULE=app.main:app \
+-e PORT="80" \
+-e APP_MODULE="app.main:app" \
+-e DATABASE_URI="mysql+aiomysql://root:lovehyy@mariadb/tgmsgmonitor?charset=utf8mb4" \
 -p 9800:80 \
 tgfastapi
 
+docker run -d --name=TGMonitorBot \
+-v /wfwork/FastAPI-TGMonitor/:/wkdir/ \
+-e DATABASE_URI="mysql+aiomysql://root:lovehyy@mariadb/tgmsgmonitor?charset=utf8mb4" \
+tgbase python app.TGMonitor
 
 ```
