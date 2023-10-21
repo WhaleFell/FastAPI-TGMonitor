@@ -44,9 +44,10 @@ docker run -d --name=TGMonitorFastAPI \
 -p 9800:80 \
 tgfastapi
 
-docker run -d --name=TGMonitorBot \
+docker run -it --name=TGMonitorBot \
 -v /wfwork/FastAPI-TGMonitor/:/wkdir/ \
 -e DATABASE_URI="mysql+aiomysql://root:lovehyy@mariadb/tgmsgmonitor?charset=utf8mb4" \
-tgbase python app.TGMonitor
+-w /wkdir/ \
+tgbase /bin/ash
 
 ```
