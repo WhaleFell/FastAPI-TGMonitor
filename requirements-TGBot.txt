@@ -8,7 +8,7 @@ aiosqlite
 click
 httpx
 fastapi
-pydantic-setting
+pydantic-settings
 
 
 # pyromod
