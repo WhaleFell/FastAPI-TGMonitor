@@ -43,7 +43,7 @@ API_ID = 21341224
 API_HASH = "2d910cf3998019516d6d4bbb53713f20"
 SESSION_PATH: Path = Path(ROOTPATH, "sessions", f"{NAME}.txt")
 # 需要监控的 群 ID
-MONITOR_CHAT_ID: List[Union[str, int]] = [-1001616666972]
+MONITOR_CHAT_ID: List[Union[str, int]] = [-1001843254765]
 __desc__ = """
 信息监控机器人正在运行中.....
 """
