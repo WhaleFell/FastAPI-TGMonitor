@@ -1,5 +1,5 @@
 # TGBot DockerFile
-FROM python:3.8.5-alpine
+FROM python:3.8.5
 
 COPY ./requirements-TGBot.txt /requirements.txt
 
