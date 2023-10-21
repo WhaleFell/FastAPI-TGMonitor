@@ -3,7 +3,7 @@ FROM python:3.8.5
 
 COPY ./requirements-TGBot.txt /requirements.txt
 
-RUN apk add git && pip install --no-cache-dir --upgrade -r /requirements.txt
+RUN apt install git && pip install --no-cache-dir --upgrade -r /requirements.txt
 
 WORKDIR /wkdir
 
