@@ -22,6 +22,8 @@ class FromChatModel(BaseModel):
         description="群描述", default="empty description"
     )
     create_time: datetime = Field(description="录入系统时间")
-    last_msg_time: datetime = Field(description="最近消息时间")
+    last_msg_time: Optional[datetime] = Field(
+        description="最近消息时间 可选", default=None
+    )
 
     model_config = ConfigDict(from_attributes=True)
