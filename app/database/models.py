@@ -164,7 +164,7 @@ class Fromchat(Base):
         comment="创建时间",
     )
 
-    # 最后信息时间
+    # 最后信息时间 (可选)
     last_msg_time: Mapped[datetime] = mapped_column(
         nullable=True,
         onupdate=getBeijingTime,
