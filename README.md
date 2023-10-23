@@ -44,12 +44,16 @@ docker run -d --name=TGMonitorFastAPI \
 -e APP_MODULE="app.main:app" \
 -e DATABASE_URI="mysql+aiomysql://root:lovehyy@mariadb/tgmsgmonitor?charset=utf8mb4" \
 -p 9800:80 \
+--network frontend \
 tgfastapi
 
 docker run -it --name=TGMonitorBot \
 -v /wfwork/FastAPI-TGMonitor/:/wkdir/ \
 -e DATABASE_URI="mysql+aiomysql://root:lovehyy@mariadb/tgmsgmonitor?charset=utf8mb4" \
 -w /wkdir/ \
+--network frontend \
 tgmonitor python -m app.TGMonitor
+
+docker run -d --name TGMsgRecord -p 996:80 -v /root/dist:/usr/share/nginx/html nginx
 
 ```

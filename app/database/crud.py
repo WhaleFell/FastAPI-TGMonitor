@@ -111,6 +111,14 @@ async def searchUser(session: AsyncSession, tg_id: str) -> Optional[User]:
 async def newUser(session: AsyncSession, TGmsg: TGMessage) -> User:
     search = await searchUser(session, tg_id=str(TGmsg.from_user.id))
     if search:
+        # TODO: update exist user username
+        await session.execute(
+            update(User)
+            .where(User.tg_id == TGmsg.from_user.id)
+            .values(username=handleUserName(TGmsg.from_user))
+        )
+        await session.commit()
+        await session.refresh(search)
         return search
 
     user = User(
